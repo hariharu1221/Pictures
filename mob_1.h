@@ -6,6 +6,7 @@ class mob_1
 public:
 	vector<cTexture*> m_ani = IMAGE->MakeVecImg("mob1");
 	vector<cBullet*>& m_bullet;
+	Vec2 dir;
 
 	float frame = 1;
 	float bultime = 0;
@@ -16,6 +17,7 @@ public:
 	virtual ~mob_1();
 
 	virtual void Update(Vec2 m_pos, int cell[][CELLSIZEY]);
+	void Move(int cell[][CELLSIZEY]);
 	virtual void Skill(Vec2 m_pos);
 	virtual void Render();
 	virtual void UIRender();

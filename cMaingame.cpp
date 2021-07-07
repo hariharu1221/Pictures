@@ -75,17 +75,22 @@ void cMaingame::AddResource()
     IMAGE->AddImage("exit_d", "title/exit_d");
     IMAGE->AddImage("credit_b", "title/credit_b");
     IMAGE->AddImage("credit_d", "title/credit_d");
+    IMAGE->AddImage("hp", "hp");
+    IMAGE->AddImage("camera", "camera");
+    IMAGE->AddImage("boss", "boss");
+    IMAGE->AddImage("mob1", "mob1");
+    IMAGE->AddImage("mob2", "mob2");
 
     IMAGE->AddImage("start", "start/startgame", 26);
+    IMAGE->AddImage("timebar", "timebar/timebar", 6);
+    IMAGE->AddImage("bdie", "bdie/die", 26);
+    IMAGE->AddImage("player", "player/player", 9);
 
-    IMAGE->AddImage("hp", "hp");
-    IMAGE->AddImage("player", "player");
     IMAGE->AddImage("PBullet", "PBullet");
     IMAGE->AddImage("2-0stage_f", "2-0stage_f");
     IMAGE->AddImage("2-0stage_c", "2-0stage_c");
     IMAGE->AddImage("3-0stage_f", "3-0stage_f");
     IMAGE->AddImage("3-0stage_c", "3-0stage_c");
-    IMAGE->AddImage("timebar", "timebar");
     IMAGE->AddImage("ui_bg", "ui_bg");
     IMAGE->AddImage("AB", "AlphaBlack");
     IMAGE->AddImage("gvtext", "gv/gvb/gve");
@@ -95,15 +100,12 @@ void cMaingame::AddResource()
     IMAGE->AddImage("ping", "ping");
 
 
-    IMAGE->AddImage("boss", "boss/1-2boss_file", 14);
     IMAGE->AddImage("bos2", "boss2/stop");
     IMAGE->AddImage("boss2r", "boss2/boss2l", 10);
     IMAGE->AddImage("boss2l", "boss2/boss2r", 10);
     IMAGE->AddImage("bullet", "bullet/bullet", 4);
     IMAGE->AddImage("bulletblue", "bullet/b_bullet", 8);
     IMAGE->AddImage("damage", "bullet/damage", 4);
-    IMAGE->AddImage("mob1", "mob1/mob1", 5);
-    IMAGE->AddImage("mob2", "mob2/mob2", 9);
     IMAGE->AddImage("mob2_skill", "mob2/mob2_skill", 9);
     IMAGE->AddImage("mob3rl", "mob3r/left/mob3", 3);
     IMAGE->AddImage("mob3rr", "mob3r/right/mob3", 3);
@@ -119,7 +121,6 @@ void cMaingame::AddResource()
     IMAGE->AddImage("boss3b", "boss3/down/boss3", 4);
     IMAGE->AddImage("boss3sk1", "boss3/ready/boss3", 4);
     IMAGE->AddImage("boss3sk2", "boss3/go/boss3", 2);
-    IMAGE->AddImage("bdie", "bdie/die", 15);
     IMAGE->AddImage("gve", "gv/gve/gve", 7);
     IMAGE->AddImage("gc", "gc/gc", 15);
     IMAGE->AddImage("mob4l", "mob4/left/mob4", 4);

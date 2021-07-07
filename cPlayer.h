@@ -13,6 +13,9 @@ public:
 	int m_Score;
 
 	string ItemName;
+	vector<cTexture*> m_ani = IMAGE->MakeVecImg("player");
+
+	float b_ani = 0;
 
 	cPlayer(vector<cBullet*>& bullet);
 	~cPlayer();

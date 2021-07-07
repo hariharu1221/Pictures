@@ -14,24 +14,24 @@ void Stage_1_0::Init()
 	srand(time(NULL));
 	bullet = new cBulletAdmin();
 	player = new cPlayer(bullet->m_bullets);
-	boss = new boss_2();
+	boss = new boss_1(bullet->m_bullets);
 	tile = new TileMap(bullet->m_bullets, "Stage_1_0");
 	tile->Init(stage);
-	mob.push_back(new mob_2(bullet->m_bullets, { 400, 300 }));
-	mob.push_back(new mob_2(bullet->m_bullets, { 1700, 200 }));
-	mob.push_back(new mob_2(bullet->m_bullets, { 500, 700 }));
-	mob.push_back(new mob_2(bullet->m_bullets, { 1600, 800 }));
+	mob.push_back(new mob_1(bullet->m_bullets, { 400, 300 }));
+	mob.push_back(new mob_1(bullet->m_bullets, { 1700, 200 }));
+	mob.push_back(new mob_1(bullet->m_bullets, { 500, 700 }));
+	mob.push_back(new mob_1(bullet->m_bullets, { 1600, 800 }));
 	coll = new cCollison(bullet->m_bullets, mob, tile, 200);
 }
 
 void Stage_1_0::Update()
 {
 	player->Update(tile->pos);
-	boss->Update(tile->pos);
+	boss->Update(tile->pos, tile->cell);
 	for (auto iter = mob.begin(); iter != mob.end(); iter++)	(*iter)->Update(tile->pos, tile->cell);
 	M_Destroy();
 	bullet->Update();
-	coll->Update(boss->sk);
+	coll->Update(0, boss->bpos);
 	tile->Update();
 }
 

@@ -418,10 +418,10 @@
     <ClCompile Include="mob_3.cpp" />
     <ClCompile Include="mob_4.cpp" />
     <ClCompile Include="nullScene.cpp" />
+    <ClCompile Include="RandomMgr.cpp" />
     <ClCompile Include="SelectScene.cpp" />
     <ClCompile Include="singleton.cpp" />
     <ClCompile Include="Stage_1_0.cpp" />
-    <ClCompile Include="Stage_1_1.cpp" />
     <ClCompile Include="Stage_2_0.cpp" />
     <ClCompile Include="Stage_3_0.cpp" />
     <ClCompile Include="TileMap.cpp" />
@@ -457,10 +457,10 @@
     <ClInclude Include="mob_3.h" />
     <ClInclude Include="mob_4.h" />
     <ClInclude Include="nullScene.h" />
+    <ClInclude Include="RandomMgr.h" />
     <ClInclude Include="SelectScene.h" />
     <ClInclude Include="singleton.h" />
     <ClInclude Include="Stage_1_0.h" />
-    <ClInclude Include="Stage_1_1.h" />
     <ClInclude Include="Stage_2_0.h" />
     <ClInclude Include="Stage_3_0.h" />
     <ClInclude Include="stdafx.h" />
@@ -468,12 +468,10 @@
     <ClInclude Include="TitleScene.h" />
     <None Include="DXUT\Optional\directx.ico" />
     <ClInclude Include="cMaingame.h" />
-    <ClInclude Include="cMaingameProg.h" />
     <ClInclude Include="DXUT\Core\DXUT.h" />
     <ClInclude Include="DXUT\Core\DXUTenum.h" />
     <ClInclude Include="DXUT\Core\DXUTmisc.h" />
     <ClCompile Include="cMaingame.cpp" />
-    <ClCompile Include="cMaingameProg.cpp" />
     <ClCompile Include="DXUT\Core\DXUT.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

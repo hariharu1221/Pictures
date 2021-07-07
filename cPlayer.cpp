@@ -27,11 +27,14 @@ void cPlayer::Update(Vec2 m_pos)
 	FireBullet(m_pos);
 	ItemUpdate();
 	SCENE->v_pos = m_pos;
+
+	b_ani += Delta * 5;
+	if (b_ani > m_ani.size()) b_ani = 0;
 }
 
 void cPlayer::Render(Vec2 m_pos)
 {
-	RENDER->CenterRender(IMAGE->FindImage("player"), Vec2(m_pos.x, m_pos.y), 2);
+	RENDER->CenterRender(m_ani[int(b_ani)], Vec2(m_pos.x, m_pos.y - 30), 0.7);
 }
 
 void cPlayer::UIRender()

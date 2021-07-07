@@ -26,18 +26,26 @@ public:
 	bool campos = false;
 	bool camrot = false;
 	bool size[3];
-	float timer = 0;
+	double timer = 0;
+
+	float tojsize = 0;
+	float onesize = 0;
+
+	float to = 0;
 
 	float tospeed[3] = { 1,1,1 };
-	float acc[3] = { 1,1,1 };
+	double acc[3] = { 1,1,1 };
 
 	void Update();
-	void ToCamPos(Vec3 pos, float speed, float acc);
-	void ToCamRot(Vec3 rot, float speed, float acc);
-	void TojSize(float size, float speed, float acc);
+	void ToCamPos(Vec3 pos, float speed = 1, float acc = 1);
+	void ToCamRot(Vec3 rot, float speed = 1, float acc = 1);
+	void TojSize(float size, float speed = 1, float acc = 1);
 	void PlusCamPos(Vec3 pos);
 	void PlusCamRot(Vec3 rot);
 	void PlusjSize(float size);
+	void SetCamPos(Vec3 pos);
+	void SetCamRot(Vec3 pos);
+	void SetjSize(float size);
 	void SetCam();
 	void Set();
 	void CamTo();

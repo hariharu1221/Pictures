@@ -6,30 +6,37 @@
 boss_1::boss_1(vector<cBullet*>& bullet)
 	:m_bullet(bullet)
 {
-	
+	D3DXVec2Normalize(&dir, &(Vec2(rand() % 1920, rand() % 1080) - bpos));
 }
 
 boss_1::~boss_1()
 {
 }
 
-void boss_1::Update(Vec2 m_pos)
+void boss_1::Update(Vec2 m_pos, int cell[][CELLSIZEY])
 {
-	if (SCENE->colorper < 70) Skill(m_pos);
+	if (SCENE->colorper < 70) { Skill(m_pos); Move(cell); }
 
 	if (SCENE->colorper >= 70)
 	{
-		b_die += Delta * 10;
+		b_die += Delta * 100;
 		if (b_die >= die.size()) b_die = die.size() - 1;
 	}
 }
 
+void boss_1::Move(int cell[][CELLSIZEY])
+{
+	POINT c = { trunc(bpos.x) - 0, trunc(bpos.y) - 0 };
+
+	for (int y = -110; y <= 110; y++)
+		for (int x = -110; x <= 110; x++)
+			if (cell[int(c.x + x)][int(c.y + y)] == 2)
+				dir = RANDOM->Vecc2(bpos);
+	bpos += dir * 200 * Delta;
+}
+
 void boss_1::Skill(Vec2 m_pos)
 {
-	frame += Delta * 4;
-	if (frame >= m_ani.size())
-		frame = 0;
-
 	if (bultime > 0.5) //0.5초마다 기본 불렛
 	{
 		Vec2 pos;
@@ -81,7 +88,7 @@ void boss_1::Skill(Vec2 m_pos)
 
 void boss_1::Render()
 {
-	RENDER->CenterRender(m_ani[int(frame)], CENTER, 2);
+	RENDER->CenterRender(IMAGE->FindImage("boss"), bpos, 1);
 	if (SCENE->colorper >= 80)
 	{
 		RENDER->CenterRender(die[int(b_die)], bpos, 3);

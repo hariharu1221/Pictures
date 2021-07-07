@@ -29,7 +29,6 @@ void TitleScene::Update()
 		if (INPUT->PointUp(VK_LBUTTON, { 790,810,1080,940 }))	SCENE->ChangeScene("Stage_1_0");
 		if (INPUT->PointUp(VK_LBUTTON, { 1200,810,1490,940 }))	exit(0);
 	}
-	if (INPUT->KeyDown(VK_RETURN) && bop) { option = false; bop = false; }
 	else
 	{
 		if (INPUT->KeyDown(VK_DOWN) && optionS < 2) { optionS++; }
@@ -48,9 +47,8 @@ void TitleScene::Render()
 	if (INPUT->PointPress(VK_LBUTTON, { 790,810,1080,940 }))	RENDER->CenterRender(IMAGE->FindImage("start_d") , CENTER, 1.2);
 	if (INPUT->PointPress(VK_LBUTTON, { 1200,810,1490,940 }))	RENDER->CenterRender(IMAGE->FindImage("exit_d"), CENTER, 1.2);
 	if (option) {
-		bop = true;
 		RENDER->CenterRender(IMAGE->FindImage("credit"), CENTER, 1.2);
-		if (INPUT->PointUp(VK_LBUTTON, { 1480, 890, 1790, 990 }))	option = false;
+		if (INPUT->KeyDown(VK_ESCAPE)) { option = false; }
 	}
 }
 

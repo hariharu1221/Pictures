@@ -7,7 +7,7 @@ cMBullet::cMBullet(Vec2 pos, Vec2 dir, float damage, float size, float speed, in
 	m_Damage = damage;
 	bulletType = "mob";
 
-	if (color == 1) { m_ani = IMAGE->MakeVecImg("bullet"); isize = 1; }
+	if (color == 1) { m_ani = IMAGE->MakeVecImg("bulletblue"); isize = 1; }
 	if (color == 2)	{ m_ani = IMAGE->MakeVecImg("bulletblue"); isize = 0.5; }
 }
 

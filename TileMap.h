@@ -41,6 +41,10 @@ public:
 	float b_time = 0;
 	float b_gc = 0;
 	float b_gv = 0;
+
+	bool camera;
+	float btimer = 1;
+	float b_cpos = 1;
 	
 	float y = 0;
 	int nowstage;
@@ -55,6 +59,7 @@ public:
 	vector<cTexture*> m_gc = IMAGE->MakeVecImg("gc");
 	vector<cBullet*>& m_bullet;
 	vector<cTexture*> ani_bullet = IMAGE->MakeVecImg("damage");
+	vector<cTexture*> timebar = IMAGE->MakeVecImg("timebar");
 	cTexture* stage_f;
 	cTexture* stage_c;
 	string stagename;

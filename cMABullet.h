@@ -10,7 +10,7 @@ public:
 	float timer = 0;
 	int count = 0;
 	float dirtimer = 0;
-	vector<cTexture*> m_ani = IMAGE->MakeVecImg("bullet");
+	vector<cTexture*> m_ani = IMAGE->MakeVecImg("bulletblue");
 
 	// cBullet을(를) 통해 상속됨
 	virtual void Update() override;

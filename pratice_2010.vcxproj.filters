@@ -124,9 +124,6 @@
     <ClCompile Include="cMaingame.cpp">
       <Filter>00: Maingame</Filter>
     </ClCompile>
-    <ClCompile Include="cMaingameProg.cpp">
-      <Filter>00: Maingame</Filter>
-    </ClCompile>
     <ClCompile Include="TitleScene.cpp">
       <Filter>01: Scene</Filter>
     </ClCompile>
@@ -203,9 +200,6 @@
     <ClCompile Include="mob_1.cpp">
       <Filter>02: Object\Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="Stage_1_1.cpp">
-      <Filter>01: Scene</Filter>
-    </ClCompile>
     <ClCompile Include="mob_2.cpp">
       <Filter>02: Object\Enemy</Filter>
     </ClCompile>
@@ -245,6 +239,9 @@
     <ClCompile Include="SelectScene.cpp">
       <Filter>01: Scene</Filter>
     </ClCompile>
+    <ClCompile Include="RandomMgr.cpp">
+      <Filter>03: Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
@@ -254,9 +251,6 @@
       <Filter>Resource Files</Filter>
     </ResourceCompile>
     <ClInclude Include="cMaingame.h">
-      <Filter>00: Maingame</Filter>
-    </ClInclude>
-    <ClInclude Include="cMaingameProg.h">
       <Filter>00: Maingame</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h" />
@@ -335,9 +329,6 @@
     <ClInclude Include="mob_1.h">
       <Filter>02: Object\Enemy</Filter>
     </ClInclude>
-    <ClInclude Include="Stage_1_1.h">
-      <Filter>01: Scene</Filter>
-    </ClInclude>
     <ClInclude Include="mob_2.h">
       <Filter>02: Object\Enemy</Filter>
     </ClInclude>
@@ -376,6 +367,9 @@
     </ClInclude>
     <ClInclude Include="SelectScene.h">
       <Filter>01: Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomMgr.h">
+      <Filter>03: Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

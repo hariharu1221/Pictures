@@ -34,7 +34,7 @@ cRenderManager::cRenderManager()
 	g_device->SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE);
 	g_device->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
 	g_device->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
-	
+
 	projPos = Vec3(-WINSIZEX, WINSIZEY, 100);
 	D3DXMatrixOrthoLH(&matProj, projPos.x, projPos.y, 0, projPos.z);
 	g_device->SetTransform(D3DTS_PROJECTION, &matProj);
@@ -55,48 +55,37 @@ cRenderManager::~cRenderManager()
 
 void cRenderManager::Update()
 {
-	if (campos)
+	if (campos == true)
 	{
+		timer += Delta * acc[0];
 		Vec3 pos;
 		D3DXVec3Normalize(&pos, &(ncamPos - camPos));
 		camPos += pos * timer * 100 * tospeed[0];
-		timer += Delta * acc[0];
+		D3DXVec3Normalize(&pos, &(ncamLook - camLook));
+		camLook += pos * timer * 100 * tospeed[0];
 		if (size[0] && camPos >= ncamPos)
 		{
 			camPos = ncamPos;
-			jsize = false;
-			timer = 0;
+			camLook = ncamLook;
+			Set();
 		}
 		else if (size[0] == false && ncamPos >= camPos)
 		{
 			camPos = ncamPos;
-			jsize = false;
-			timer = 0;
+			camLook = ncamLook;
+			Set();
 		}
 
 		D3DXMatrixLookAtLH(&matView, &camPos, &camLook, &camUp);
 		g_device->SetTransform(D3DTS_VIEW, &matView);
 	}
 
-	if (jsize)
+	if (jsize == true)
 	{
-		Vec3 pos;
-		D3DXVec3Normalize(&pos, &(nprojPos - projPos));
-		projPos += pos * timer * 100 * tospeed[2];
-		timer += Delta * acc[2];
-		if (size[2] && projPos >= nprojPos)
-		{
-			projPos = nprojPos;
-			jsize = false;
-			timer = 0;
-		}
-		else if (size[2] == false && nprojPos >= projPos)
-		{
-			projPos = nprojPos;
-			jsize = false;
-			timer = 0;
-		}
-
+		timer += Delta * acc[2] * 1;
+		onesize += Delta * timer * tospeed[2];
+		if (onesize >= tojsize) { onesize = tojsize; Set(); }
+		projPos = Vec3(-WINSIZEX / onesize, WINSIZEY / onesize, 100);
 		D3DXMatrixOrthoLH(&matProj, projPos.x, projPos.y, 0, projPos.z);
 		g_device->SetTransform(D3DTS_PROJECTION, &matProj);
 	}
@@ -130,8 +119,8 @@ void cRenderManager::TojSize(float size, float speed, float acc)
 	jsize = true;
 	tospeed[2] = speed;
 	this->acc[2] = acc;
-	if (projPos > nprojPos) this->size[2] = false;
-	if (nprojPos > projPos) this->size[2] = true;
+	tojsize = size;
+	onesize = 1;
 }
 
 void cRenderManager::PlusCamPos(Vec3 pos)
@@ -150,6 +139,26 @@ void cRenderManager::PlusCamRot(Vec3 rot)
 void cRenderManager::PlusjSize(float size)
 {
 	projPos = Vec3(projPos.x / size, projPos.y / size, 100);
+	D3DXMatrixOrthoLH(&matProj, projPos.x, projPos.y, 0, projPos.z);
+	g_device->SetTransform(D3DTS_PROJECTION, &matProj);
+}
+
+void cRenderManager::SetCamPos(Vec3 pos)
+{
+	camPos = Vec3(pos.x, pos.y, pos.z + 1);
+	camLook = pos;
+
+	D3DXMatrixLookAtLH(&matView, &camPos, &camLook, &camUp);
+	g_device->SetTransform(D3DTS_VIEW, &matView);
+}
+
+void cRenderManager::SetCamRot(Vec3 pos)
+{
+}
+
+void cRenderManager::SetjSize(float size)
+{
+	projPos = Vec3(float(-WINSIZEX / size), float(WINSIZEY / size), 100);
 	D3DXMatrixOrthoLH(&matProj, projPos.x, projPos.y, 0, projPos.z);
 	g_device->SetTransform(D3DTS_PROJECTION, &matProj);
 }
