@@ -25,29 +25,9 @@ void TitleScene::Update()
 	}
 	if (option == false)
 	{
-		if (INPUT->KeyDown(VK_UP) && select >= 3) { select -= 2; }
-		if (INPUT->KeyDown(VK_DOWN) && select <= 2) { select += 2; }
-		if (INPUT->KeyDown(VK_RIGHT) && select < 4) { select++; }
-		if (INPUT->KeyDown(VK_LEFT) && select > 1) { select--; }
-		switch (select)
-		{
-		case 1:
-			if (INPUT->KeyDown(VK_RETURN))
-				SCENE->ChangeScene("SelectScene");
-			break;
-		case 2:
-			if (INPUT->KeyDown(VK_RETURN))
-				exit(0);
-			break;
-		case 3:
-			break;
-		case 4:
-			if (INPUT->KeyDown(VK_RETURN))
-				option = true;
-			break;
-		default:
-			break;
-		}
+		if (INPUT->PointUp(VK_LBUTTON, { 380,810,670,940 }))	option = true;
+		if (INPUT->PointUp(VK_LBUTTON, { 790,810,1080,940 }))	SCENE->ChangeScene("Stage_1_0");
+		if (INPUT->PointUp(VK_LBUTTON, { 1200,810,1490,940 }))	exit(0);
 	}
 	if (INPUT->KeyDown(VK_RETURN) && bop) { option = false; bop = false; }
 	else
@@ -59,14 +39,14 @@ void TitleScene::Update()
 
 void TitleScene::Render()
 {
-	if (select == 1)
-		RENDER->CenterRender(IMAGE->FindImage("start game ready"), CENTER, 1.2);
-	if (select == 2)
-		RENDER->CenterRender(IMAGE->FindImage("end the game ready"), CENTER, 1.2);
-	if (select == 3)
-		RENDER->CenterRender(IMAGE->FindImage("how to play ready"), CENTER, 1.2);
-	if (select == 4)
-		RENDER->CenterRender(IMAGE->FindImage("credit ready"), CENTER, 1.2);
+	RENDER->CenterRender(IMAGE->FindImage("tbasic"), CENTER, 1.2);
+	if (INPUT->PointOn(VK_LBUTTON, { 380,810,670,940 }))	RENDER->CenterRender(IMAGE->FindImage("credit_b"), CENTER, 1.2);
+	if (INPUT->PointOn(VK_LBUTTON, { 790,810,1080,940 }))	RENDER->CenterRender(IMAGE->FindImage("start_b"), CENTER, 1.2);
+	if (INPUT->PointOn(VK_LBUTTON, { 1200,810,1490,940 }))	RENDER->CenterRender(IMAGE->FindImage("exit_b"), CENTER, 1.2);
+
+	if (INPUT->PointPress(VK_LBUTTON, { 380,810,670,940 }))	RENDER->CenterRender(IMAGE->FindImage("credit_d"), Vec2(966, 540), 1.2);
+	if (INPUT->PointPress(VK_LBUTTON, { 790,810,1080,940 }))	RENDER->CenterRender(IMAGE->FindImage("start_d") , CENTER, 1.2);
+	if (INPUT->PointPress(VK_LBUTTON, { 1200,810,1490,940 }))	RENDER->CenterRender(IMAGE->FindImage("exit_d"), CENTER, 1.2);
 	if (option) {
 		bop = true;
 		RENDER->CenterRender(IMAGE->FindImage("credit"), CENTER, 1.2);

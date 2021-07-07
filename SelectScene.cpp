@@ -30,7 +30,6 @@ void SelectScene::Update()
 			if (INPUT->KeyDown(VK_RETURN))
 			{
 				s1ready = true;
-				RENDER->SetjSize(2);
 			}
 			break;
 		case 2:

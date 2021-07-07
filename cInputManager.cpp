@@ -66,6 +66,15 @@ bool cInputManager::PointUp(int key, RECT rt)
 	return false;
 }
 
+bool cInputManager::PointOn(int key, RECT rt)
+{
+	Rtdraw(rt);
+	if (mouse.x >= rt.left && mouse.x <= rt.right
+		&& mouse.y >= rt.top && mouse.y <= rt.bottom)
+		return true;
+	return false;
+}
+
 void cInputManager::Rtdraw(RECT rt)
 {
 	if (coldraw)

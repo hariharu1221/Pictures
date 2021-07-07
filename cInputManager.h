@@ -19,6 +19,7 @@ public:
 	bool PointPress(int key, RECT rt);
 	bool PointDown(int key, RECT rt);
 	bool PointUp(int key, RECT rt);
+	bool PointOn(int key, RECT rt);
 	void Rtdraw(RECT rt);
 };
 
