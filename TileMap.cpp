@@ -53,6 +53,8 @@ void TileMap::Update()
 
 	SCENE->per(coloring_per, pos);
 	if (INPUT->KeyUp(VK_F1)) nextstage = true;
+	if (INPUT->KeyUp(VK_F2)) speed = 8;
+	if (INPUT->KeyUp(VK_F3)) hp++;
 	if (INPUT->KeyUp(VK_ESCAPE)) SCENE->ChangeScene("TitleScene");
 
 	if (camera) {
@@ -404,6 +406,9 @@ void TileMap::Render()
 		if (b_gv >= m_gv.size()) b_gv = m_gv.size() - 1;
 		if (INPUT->PointUp(VK_LBUTTON, { 820,640,910,730 }))	retry = true;
 		if (INPUT->PointUp(VK_LBUTTON, { 990,640,1080,730 }))	title = true;
+
+		b_alpha -= Delta;
+		if (b_alpha <= 0) b_alpha = 0;
 	}
 	if (coloring_per >= 70)  // 80%Ã¤¿ì¸é5
 	{
@@ -411,6 +416,9 @@ void TileMap::Render()
 		gc = true;
 		if (b_gc >= m_gc.size()) b_gc = m_gc.size() - 1;
 		if (INPUT->KeyUp(VK_RETURN))	nextstage = true;
+
+		b_alpha -= Delta;
+		if (b_alpha <= 0) b_alpha = 0;
 	}
 	if (damage)	RENDER->CenterRender(ani_bullet[int(b_count)], stop_pos);
 }
@@ -423,31 +431,6 @@ void TileMap::UIRender()
 
 void TileMap::SUI()
 {
-	if (pos.y <= 180)
-	{
-		UI->CenterRender2(timebar[0], Vec2(1800, 50), 1, 90);
-		UI->CenterRender2(IMAGE->FindImage("camera"), Vec2(10, 10), 1, 90);
-		Text(100, 100);
-	}
-	else
-	{
-		UI->CenterRender2(timebar[0], Vec2(1800, 50));
-		UI->CenterRender2(IMAGE->FindImage("camera"), Vec2(10, 10));
-		Text(255, 100);
-	}
-
-	if (start)
-	{
-		b_start += 0.1;
-		if (b_start >= m_start.size()) { start = false; b_start = 0; }
-		UI->CenterRender(m_start[int(b_start)], CENTER, 1.2);
-	}
-
-	for (int i = 0; i < hp; i++) {
-		if (pos.x <= (350 + i*60) && pos.y >= 0 && pos.y <= 100)	UI->CenterRender2(IMAGE->FindImage("hp"), Vec2(245 + i*60, 10), 1, 100);
-		else	UI->CenterRender2(IMAGE->FindImage("hp"), Vec2(245 + i*60, 10));
-	}
-
 	if (gv)
 	{
 		UI->CenterRender(IMAGE->FindImage("AB"), CENTER);
@@ -459,9 +442,34 @@ void TileMap::SUI()
 		UI->CenterRender(m_gc[int(b_gc)], CENTER, 1.2);
 		char str[256];
 		sprintf(str, "%d", int(timer));
-		UI->PrintText(str, Vec2(780,910), 100, 255 * (b_gc / 15), 40, 40, 40);
+		UI->PrintText(str, Vec2(780,910), 100, 255 * (b_gc / m_gc.size() - 1), 40, 40, 40);
 		sprintf(str, "%d", int(coloring_per * 100000 * (timer / 3000)));
-		UI->PrintText(str, Vec2(1420, 910), 100, 255 * (b_gc / 15), 40, 40, 40);
+		UI->PrintText(str, Vec2(1420, 910), 100, 255 * (b_gc / m_gc.size() - 1), 40, 40, 40);
+	}
+
+	if (pos.y <= 180)
+	{
+		UI->CenterRender2(timebar[0], Vec2(1800, 50), 1, 90 * b_alpha);
+		UI->CenterRender2(IMAGE->FindImage("camera"), Vec2(10, 10), 1, 90 * b_alpha);
+		Text(100, 100);
+	}
+	else
+	{
+		UI->CenterRender2(timebar[0], Vec2(1800, 50), 1, 255 * b_alpha);
+		UI->CenterRender2(IMAGE->FindImage("camera"), Vec2(10, 10) , 1, 255 * b_alpha);
+		Text(255, 100);
+	}
+
+	if (start)
+	{
+		b_start += 0.1;
+		if (b_start >= m_start.size()) { start = false; b_start = 0; }
+		UI->CenterRender(m_start[int(b_start)], CENTER, 1.2);
+	}
+
+	for (int i = 0; i < hp; i++) {
+		if (pos.x <= (350 + i*60) && pos.y >= 0 && pos.y <= 100)	UI->CenterRender2(IMAGE->FindImage("hp"), Vec2(245 + i*60, 10), 1, 100 * b_alpha);
+		else	UI->CenterRender2(IMAGE->FindImage("hp"), Vec2(245 + i*60, 10), 1, 255 * b_alpha);
 	}
 }
 
@@ -495,7 +503,7 @@ void TileMap::SetUp()
 	temp = 0;
 
 	hp = 5;
-	speed = 8;
+	speed = 4;
 	timer = 100;
 	second = { 0,0 };
 	frame = 0;

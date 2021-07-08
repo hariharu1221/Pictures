@@ -41,6 +41,7 @@ public:
 	float b_time = 0;
 	float b_gc = 0;
 	float b_gv = 0;
+	float b_alpha = 1;
 
 	bool camera = false;
 	float btimer = 1;

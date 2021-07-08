@@ -86,10 +86,10 @@ void cMaingame::AddResource()
     IMAGE->AddImage("timebar", "timebar/timebar", 6);
     IMAGE->AddImage("bdie", "bdie/die", 26);
     IMAGE->AddImage("player", "player/player", 9);
-    IMAGE->AddImage("gve", "gv/gve/gve", 29);
-    IMAGE->AddImage("gc", "gc/gc", 28);
-    IMAGE->AddImage("gve2", "gv2/gve/gve", 29);
-    IMAGE->AddImage("gc2", "gc2/gc", 28);
+    IMAGE->AddImage("gve", "gv/gve/gve", 32);
+    IMAGE->AddImage("gc", "gc/gc", 18);
+    IMAGE->AddImage("gve2", "gv2/gve/gve", 31);
+    IMAGE->AddImage("gc2", "gc2/gc", 23);
 
     IMAGE->AddImage("PBullet", "PBullet");
     IMAGE->AddImage("AB", "AlphaBlack");
