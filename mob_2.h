@@ -8,6 +8,6 @@ public:
 	~mob_2();
 
 	void Update(Vec2 m_pos, int cell[][CELLSIZEY]);
-	void Skill();
+	void Skill(Vec2 m_pos);
 };
 

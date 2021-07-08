@@ -42,7 +42,7 @@ public:
 	float b_gc = 0;
 	float b_gv = 0;
 
-	bool camera;
+	bool camera = false;
 	float btimer = 1;
 	float b_cpos = 1;
 	

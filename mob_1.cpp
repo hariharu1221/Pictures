@@ -34,15 +34,15 @@ void mob_1::Move(int cell[][CELLSIZEY])
 
 void mob_1::Skill(Vec2 m_pos)
 {
-	if (bultime > 1) //1초마다 기본 불렛
-	{
-		Vec2 pos;
-		D3DXVec2Normalize(&pos, &(m_pos - mob_p));
-		m_bullet.push_back(new cMABullet(Vec2(mob_p.x + 70, mob_p.y), pos, 1, 10, 700, 1));
-		bultime = 0;
-	}
-
-	bultime += Delta;
+	//if (bultime > 1) //1초마다 기본 불렛
+	//{
+	//	Vec2 pos;
+	//	D3DXVec2Normalize(&pos, &(m_pos - mob_p));
+	//	m_bullet.push_back(new cMABullet(Vec2(mob_p.x + 70, mob_p.y), pos, 1, 10, 700, 1));
+	//	bultime = 0;
+	//}
+	//
+	//bultime += Delta;
 }
 void mob_1::Render()
 {

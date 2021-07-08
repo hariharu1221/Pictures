@@ -13,6 +13,8 @@ void TitleScene::Init()
 {
 	SCENE->PlayerInit();
 	set = true;
+	option = false;
+
 }
 
 void TitleScene::Update()
@@ -21,7 +23,6 @@ void TitleScene::Update()
 	{
 		SCENE->ResetScnee("Stage_1_0", new Stage_1_0);
 		SCENE->ResetScnee("Stage_2_0", new Stage_2_0);
-		SCENE->ResetScnee("Stage_3_0", new Stage_3_0);
 	}
 	if (option == false)
 	{

@@ -15,13 +15,15 @@ boss_1::~boss_1()
 
 void boss_1::Update(Vec2 m_pos, int cell[][CELLSIZEY])
 {
-	if (SCENE->colorper < 70) { Skill(m_pos); Move(cell); }
+	if (SCENE->colorper < 70) { Move(cell); }
 
 	if (SCENE->colorper >= 70)
 	{
 		b_die += Delta * 100;
 		if (b_die >= die.size()) b_die = die.size() - 1;
 	}
+
+	SCENE->bpos = bpos;
 }
 
 void boss_1::Move(int cell[][CELLSIZEY])

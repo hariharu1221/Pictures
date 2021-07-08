@@ -21,7 +21,6 @@ void cMaingame::Init()
     SCENE->AddScene("nullScene", new nullScene);
     SCENE->AddScene("Stage_1_0", new Stage_1_0);
     SCENE->AddScene("Stage_2_0", new Stage_2_0);
-    SCENE->AddScene("Stage_3_0", new Stage_3_0);
     SCENE->ChangeScene("TitleScene");
     //CAMERA->Init();
 }
@@ -71,6 +70,8 @@ void cMaingame::AddResource()
     IMAGE->AddImage("tbasic", "title/basic");
     IMAGE->AddImage("start_b", "title/start_b");
     IMAGE->AddImage("start_d", "title/start_d");
+    IMAGE->AddImage("2-0stage_f", "2-0stage_f");
+    IMAGE->AddImage("2-0stage_c", "2-0stage_c");
     IMAGE->AddImage("exit_b", "title/exit_b");
     IMAGE->AddImage("exit_d", "title/exit_d");
     IMAGE->AddImage("credit_b", "title/credit_b");
@@ -85,53 +86,19 @@ void cMaingame::AddResource()
     IMAGE->AddImage("timebar", "timebar/timebar", 6);
     IMAGE->AddImage("bdie", "bdie/die", 26);
     IMAGE->AddImage("player", "player/player", 9);
+    IMAGE->AddImage("gve", "gv/gve/gve", 29);
+    IMAGE->AddImage("gc", "gc/gc", 28);
+    IMAGE->AddImage("gve2", "gv2/gve/gve", 29);
+    IMAGE->AddImage("gc2", "gc2/gc", 28);
 
     IMAGE->AddImage("PBullet", "PBullet");
-    IMAGE->AddImage("2-0stage_f", "2-0stage_f");
-    IMAGE->AddImage("2-0stage_c", "2-0stage_c");
-    IMAGE->AddImage("3-0stage_f", "3-0stage_f");
-    IMAGE->AddImage("3-0stage_c", "3-0stage_c");
-    IMAGE->AddImage("ui_bg", "ui_bg");
     IMAGE->AddImage("AB", "AlphaBlack");
-    IMAGE->AddImage("gvtext", "gv/gvb/gve");
-    IMAGE->AddImage("gctext", "gc/gcb");
     IMAGE->AddImage("credit", "credit");
     IMAGE->AddImage("selectS", "selectS");
     IMAGE->AddImage("ping", "ping");
 
-
-    IMAGE->AddImage("bos2", "boss2/stop");
-    IMAGE->AddImage("boss2r", "boss2/boss2l", 10);
-    IMAGE->AddImage("boss2l", "boss2/boss2r", 10);
     IMAGE->AddImage("bullet", "bullet/bullet", 4);
     IMAGE->AddImage("bulletblue", "bullet/b_bullet", 8);
-    IMAGE->AddImage("damage", "bullet/damage", 4);
-    IMAGE->AddImage("mob2_skill", "mob2/mob2_skill", 9);
-    IMAGE->AddImage("mob3rl", "mob3r/left/mob3", 3);
-    IMAGE->AddImage("mob3rr", "mob3r/right/mob3", 3);
-    IMAGE->AddImage("mob3rt", "mob3r/up/mob3", 3);
-    IMAGE->AddImage("mob3rb", "mob3r/down/mob3", 3);
-    IMAGE->AddImage("mob3bl", "mob3b/left/mob3", 3);
-    IMAGE->AddImage("mob3br", "mob3b/right/mob3", 3);
-    IMAGE->AddImage("mob3bt", "mob3b/up/mob3", 3);
-    IMAGE->AddImage("mob3bb", "mob3b/down/mob3", 3);
-    IMAGE->AddImage("boss3l", "boss3/left/boss3", 4);
-    IMAGE->AddImage("boss3r", "boss3/right/boss3", 4);
-    IMAGE->AddImage("boss3t", "boss3/up/boss3", 4);
-    IMAGE->AddImage("boss3b", "boss3/down/boss3", 4);
-    IMAGE->AddImage("boss3sk1", "boss3/ready/boss3", 4);
-    IMAGE->AddImage("boss3sk2", "boss3/go/boss3", 2);
-    IMAGE->AddImage("gve", "gv/gve/gve", 7);
-    IMAGE->AddImage("gc", "gc/gc", 15);
-    IMAGE->AddImage("mob4l", "mob4/left/mob4", 4);
-    IMAGE->AddImage("mob4r", "mob4/right/mob4", 4);
-    IMAGE->AddImage("mob4t", "mob4/up/mob4", 4);
-    IMAGE->AddImage("mob4b", "mob4/down/mob4", 4);
-    IMAGE->AddImage("boss4l", "boss4/left/boss4", 4);
-    IMAGE->AddImage("boss4r", "boss4/right/boss4", 4);
-    IMAGE->AddImage("boss4t", "boss4/up/boss4", 4);
-    IMAGE->AddImage("boss4b", "boss4/down/boss4", 4);
-    //IMAGE->AddImage("boss4sk1", "boss4/ready/boss4", 4);
-    IMAGE->AddImage("boss4sk2", "boss4/sk2/boss4", 6);
+    IMAGE->AddImage("damage", "bullet/damage", 34);
 }
 

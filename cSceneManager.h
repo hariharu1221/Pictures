@@ -15,6 +15,7 @@ public:
 	float m_MaxHp;
 	int m_Score;
 	Vec2 v_pos;
+	Vec2 bpos;
 	string stagename;
 	float colorper = 0;
 

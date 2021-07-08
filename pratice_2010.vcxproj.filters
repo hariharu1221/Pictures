@@ -215,26 +215,11 @@
     <ClCompile Include="Stage_2_0.cpp">
       <Filter>01: Scene</Filter>
     </ClCompile>
-    <ClCompile Include="mob_3.cpp">
-      <Filter>02: Object\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="boss_3.cpp">
-      <Filter>02: Object\Enemy</Filter>
-    </ClCompile>
     <ClCompile Include="nullScene.cpp">
-      <Filter>01: Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Stage_3_0.cpp">
       <Filter>01: Scene</Filter>
     </ClCompile>
     <ClCompile Include="cMABullet.cpp">
       <Filter>02: Object\Bullet\MB</Filter>
-    </ClCompile>
-    <ClCompile Include="mob_4.cpp">
-      <Filter>02: Object\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="boss_4.cpp">
-      <Filter>02: Object\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="SelectScene.cpp">
       <Filter>01: Scene</Filter>
@@ -344,26 +329,11 @@
     <ClInclude Include="Stage_2_0.h">
       <Filter>01: Scene</Filter>
     </ClInclude>
-    <ClInclude Include="mob_3.h">
-      <Filter>02: Object\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="boss_3.h">
-      <Filter>02: Object\Enemy</Filter>
-    </ClInclude>
     <ClInclude Include="nullScene.h">
-      <Filter>01: Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Stage_3_0.h">
       <Filter>01: Scene</Filter>
     </ClInclude>
     <ClInclude Include="cMABullet.h">
       <Filter>02: Object\Bullet\MB</Filter>
-    </ClInclude>
-    <ClInclude Include="mob_4.h">
-      <Filter>02: Object\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="boss_4.h">
-      <Filter>02: Object\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="SelectScene.h">
       <Filter>01: Scene</Filter>

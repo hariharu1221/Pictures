@@ -14,13 +14,13 @@ void Stage_2_0::Init()
 	srand(time(NULL));
 	bullet = new cBulletAdmin();
 	player = new cPlayer(bullet->m_bullets);
-	boss = new boss_3(bullet->m_bullets);
+	boss = new boss_2(bullet->m_bullets);
 	tile = new TileMap(bullet->m_bullets, "Stage_2_0");
 	tile->Init(stage);
-	mob.push_back(new mob_3(bullet->m_bullets, { 400, 300 }));
-	mob.push_back(new mob_3(bullet->m_bullets, { 1700, 200 }));
-	mob.push_back(new mob_3(bullet->m_bullets, { 500, 700 }));
-	mob.push_back(new mob_3(bullet->m_bullets, { 1600, 800 }));
+	mob.push_back(new mob_2(bullet->m_bullets, { 400, 300 }));
+	mob.push_back(new mob_2(bullet->m_bullets, { 1700, 200 }));
+	mob.push_back(new mob_2(bullet->m_bullets, { 500, 700 }));
+	mob.push_back(new mob_2(bullet->m_bullets, { 1600, 800 }));
 	coll = new cCollison(bullet->m_bullets, mob, tile, 130);
 }
 
