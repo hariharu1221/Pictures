@@ -5,7 +5,10 @@
 mob_2::mob_2(vector<cBullet*>& bullet, Vec2 mob_p)
 	: mob_1(bullet, mob_p)
 {
-	m_ani = IMAGE->MakeVecImg("mob2");
+	if (rand() % 2)
+		m_tex = IMAGE->FindImage("mob3");
+	else
+		m_tex = IMAGE->FindImage("mob4");
 	size = 70;
 }
 

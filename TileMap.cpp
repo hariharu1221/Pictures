@@ -31,8 +31,8 @@ void TileMap::Init(int stage)
 	case 2:
 		stage_f = IMAGE->FindImage("2-0stage_f");
 		stage_c = IMAGE->FindImage("2-0stage_c");
-		m_gv = IMAGE->MakeVecImg("gve2");
-		m_gc = IMAGE->MakeVecImg("gc2");
+		m_gv = IMAGE->MakeVecImg("2gve");
+		m_gc = IMAGE->MakeVecImg("2gc");
 		break;
 	}
 	SetUp();
@@ -55,7 +55,7 @@ void TileMap::Update()
 	if (INPUT->KeyUp(VK_F1)) nextstage = true;
 	if (INPUT->KeyUp(VK_F2)) speed = 8;
 	if (INPUT->KeyUp(VK_F3)) hp++;
-	if (INPUT->KeyUp(VK_ESCAPE)) SCENE->ChangeScene("TitleScene");
+	if (INPUT->KeyUp(VK_ESCAPE)) title = true;
 
 	if (camera) {
 		RENDER->SetjSize(1.3);
@@ -433,30 +433,28 @@ void TileMap::SUI()
 {
 	if (gv)
 	{
-		UI->CenterRender(IMAGE->FindImage("AB"), CENTER);
 		UI->CenterRender(m_gv[int(b_gv)], CENTER, 1.2);
 	}
 	if (gc)
 	{
-		UI->CenterRender(IMAGE->FindImage("AB"), CENTER);
 		UI->CenterRender(m_gc[int(b_gc)], CENTER, 1.2);
 		char str[256];
 		sprintf(str, "%d", int(timer));
-		UI->PrintText(str, Vec2(780,910), 100, 255 * (b_gc / m_gc.size() - 1), 40, 40, 40);
+		UI->PrintText(str, Vec2(780, 910), 100, 255 * (b_gc / m_gc.size()), 40, 40, 40);
 		sprintf(str, "%d", int(coloring_per * 100000 * (timer / 3000)));
-		UI->PrintText(str, Vec2(1420, 910), 100, 255 * (b_gc / m_gc.size() - 1), 40, 40, 40);
+		UI->PrintText(str, Vec2(1420, 910), 100, 255 * (b_gc / m_gc.size()), 40, 40, 40);
 	}
 
 	if (pos.y <= 180)
 	{
-		UI->CenterRender2(timebar[0], Vec2(1800, 50), 1, 90 * b_alpha);
+		UI->CenterRender2(timebar[int((timer * 6 + 50) / 100 - 1)], Vec2(1800, 50), 1, 90 * b_alpha);
 		UI->CenterRender2(IMAGE->FindImage("camera"), Vec2(10, 10), 1, 90 * b_alpha);
 		Text(100, 100);
 	}
 	else
 	{
-		UI->CenterRender2(timebar[0], Vec2(1800, 50), 1, 255 * b_alpha);
-		UI->CenterRender2(IMAGE->FindImage("camera"), Vec2(10, 10) , 1, 255 * b_alpha);
+		UI->CenterRender2(timebar[int((timer * 6 + 50) / 100 - 1)], Vec2(1800, 50), 1, 255 * b_alpha);
+		UI->CenterRender2(IMAGE->FindImage("camera"), Vec2(10, 10), 1, 255 * b_alpha);
 		Text(255, 100);
 	}
 
@@ -468,8 +466,8 @@ void TileMap::SUI()
 	}
 
 	for (int i = 0; i < hp; i++) {
-		if (pos.x <= (350 + i*60) && pos.y >= 0 && pos.y <= 100)	UI->CenterRender2(IMAGE->FindImage("hp"), Vec2(245 + i*60, 10), 1, 100 * b_alpha);
-		else	UI->CenterRender2(IMAGE->FindImage("hp"), Vec2(245 + i*60, 10), 1, 255 * b_alpha);
+		if (pos.x <= (350 + i * 60) && pos.y >= 0 && pos.y <= 100)	UI->CenterRender2(IMAGE->FindImage("hp"), Vec2(245 + i * 60, 10), 1, 100 * b_alpha);
+		else	UI->CenterRender2(IMAGE->FindImage("hp"), Vec2(245 + i * 60, 10), 1, 255 * b_alpha);
 	}
 }
 
@@ -482,7 +480,7 @@ void TileMap::Text(int alpha, int y)
 	sprintf(str, "stage: %d", nowstage + 1);
 	UI->PrintText(str, Vec2(350, 80 + (y / 1.2)), 50, alpha, 100, 100, 100);
 	sprintf(str, "score: %d", int(coloring_per * 100000 * (timer / 3000)));
-	UI->PrintText(str, Vec2(1700, 80) , 100, alpha, 50, 50, 50);
+	UI->PrintText(str, Vec2(1700, 80) , 100, alpha * (b_gc / m_gc.size() - 1), 50, 50, 50);
 }
 
 void TileMap::SetUp()
@@ -536,8 +534,32 @@ void TileMap::SetUp()
 
 void TileMap::ChangeScene()
 {
+	if (nextstage) //다음스테이지로
+	{
+		stop_pos = pos;
+		damage = true;
+		pos = first;
+		IsDrawing = true;
+		DrawArea(3);
+		switch (nowstage)
+		{
+		case 1:
+			IMAGE->ReloadImage("stage_c");
+			IMAGE->ReloadImage("stage_f");
+			SCENE->ChangeScene("Stage_2_0");
+			break;
+		case 2:
+			title = true;
+			break;
+		}
+	}
 	if (title) //타이틀로
 	{
+		stop_pos = pos;
+		damage = true;
+		pos = first;
+		IsDrawing = true;
+		DrawArea(3);
 		IMAGE->ReloadImage("stage_c");
 		IMAGE->ReloadImage("stage_f");
 		IMAGE->ReloadImage("2-0stage_c");
@@ -547,22 +569,6 @@ void TileMap::ChangeScene()
 		SetUp();
 		DrawArea();
 		SCENE->ChangeScene("TitleScene");
-	}
-	if (nextstage) //다음스테이지로
-	{
-		switch (nowstage)
-		{
-		case 1:
-			IMAGE->ReloadImage("stage_c");
-			IMAGE->ReloadImage("stage_f");
-			SCENE->ChangeScene("Stage_2_0");
-			break;
-		case 2:
-			IMAGE->ReloadImage("2-0stage_c");
-			IMAGE->ReloadImage("2-0stage_f");
-			SCENE->ChangeScene("TitleScene");
-			break;
-		}
 	}
 	if (retry) //스테이지 리로드
 	{

@@ -6,6 +6,10 @@
 mob_1::mob_1(vector<cBullet*>& bullet, Vec2 mob_p)
 	:m_bullet(bullet)
 {
+	if (rand() % 2)
+		m_tex = IMAGE->FindImage("mob1");
+	else 
+		m_tex = IMAGE->FindImage("mob2");
 	this->mob_p = mob_p;
 	D3DXVec2Normalize(&dir, &(Vec2(rand() % 1920, rand() % 1080) - this->mob_p));
 }
@@ -46,7 +50,7 @@ void mob_1::Skill(Vec2 m_pos)
 }
 void mob_1::Render()
 {
-	RENDER->CenterRender(IMAGE->FindImage("mob1"), mob_p, 2);
+	RENDER->CenterRender(m_tex ,mob_p, 2);
 }
 void mob_1::UIRender()
 {

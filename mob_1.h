@@ -4,7 +4,7 @@ class mob_1
 	: public Enemy
 {
 public:
-	vector<cTexture*> m_ani = IMAGE->MakeVecImg("mob1");
+	cTexture* m_tex;
 	vector<cBullet*>& m_bullet;
 	Vec2 dir;
 

@@ -68,6 +68,7 @@ void Stage_2_0::M_Destroy() //몬스터 파괴 및 조건
 		auto& iter = mob[i];
 		if (tile->cell[int(iter->mob_p.x)][int(iter->mob_p.y)] == 3)
 		{
+			PART->AddParticle(iter->mob_p, 1);
 			SAFE_DELETE(iter);
 			mob.erase(mob.begin() + i);
 			i--; size--;

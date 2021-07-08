@@ -90,7 +90,7 @@ void boss_2::Skill(Vec2 m_pos)
 
 void boss_2::Render()
 {
-	RENDER->CenterRender(IMAGE->FindImage("boss"), bpos, 1);
+	RENDER->CenterRender(IMAGE->FindImage("boss2"), bpos, 1);
 	if (SCENE->colorper >= 80)
 	{
 		RENDER->CenterRender(die[int(b_die)], bpos, 3);

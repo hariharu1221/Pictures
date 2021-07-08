@@ -4,7 +4,7 @@
 cParticleAni::cParticleAni(Vec2 pos, float size)
 	:cParticle(pos, size)
 {
-	m_images = IMAGE->MakeVecImg("expl");
+	m_images = IMAGE->MakeVecImg("mdie");
 	//SOUND->Play("explosion-2")->SetVolume(-1800);
 	isDestroy = false;
 }
@@ -21,7 +21,7 @@ void cParticleAni::Update()
 	{
 		m_ani = new cTimer(0.02, [&]()->void {
 			m_frame++;
-			if (m_frame == m_images.size())
+			if (m_frame == m_images.size() - 1)
 				isDestroy = true;
 		}, 1);
 		m_bOnce = false;
