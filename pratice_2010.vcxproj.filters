@@ -227,6 +227,7 @@
     <ClCompile Include="RandomMgr.cpp">
       <Filter>03: Manager</Filter>
     </ClCompile>
+    <ClCompile Include="SoundMgr.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
@@ -341,6 +342,7 @@
     <ClInclude Include="RandomMgr.h">
       <Filter>03: Manager</Filter>
     </ClInclude>
+    <ClInclude Include="SoundMgr.h" />
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>

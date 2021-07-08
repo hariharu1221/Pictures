@@ -1,5 +1,5 @@
 #pragma once
-
+#pragma comment(lib,"dsound.lib")
 #include <vector>
 #include <list>
 #include <map>
@@ -39,6 +39,9 @@ const int T = CENTER.y - CELLSIZEY / 2;
 const int B = CENTER.y + CELLSIZEY / 2;
 const int x_gap = (WINSIZEX - CELLSIZEX) / 2;
 const int y_gap = (WINSIZEY - CELLSIZEY) / 2;
+
+#include "SDKsound.h"
+#include "SDKwavefile.h"
 
 #include "cTexture.h"
 #include "cScene.h"
