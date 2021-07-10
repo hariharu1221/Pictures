@@ -14,9 +14,6 @@
     <Filter Include="01: Scene">
       <UniqueIdentifier>{30da818b-6468-4024-8dd1-e81f9a05f0cf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02: Object">
-      <UniqueIdentifier>{7eeca6e0-0ae3-4b3a-aa8b-68d1c517eb82}</UniqueIdentifier>
-    </Filter>
     <Filter Include="03: Manager">
       <UniqueIdentifier>{6a2a62d7-caec-44ff-889a-5ba7e50cfb69}</UniqueIdentifier>
     </Filter>
@@ -38,6 +35,13 @@
     <Filter Include="03: Manager\UI">
       <UniqueIdentifier>{ada2cafb-19fa-4276-8267-bd4884362136}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{2c3d4c8c-5d1a-459a-a05a-a4e4b608a44e}</UniqueIdentifier>
+      <Extensions>fx;fxh;hlsl</Extensions>
+    </Filter>
+    <Filter Include="02: Object">
+      <UniqueIdentifier>{7eeca6e0-0ae3-4b3a-aa8b-68d1c517eb82}</UniqueIdentifier>
+    </Filter>
     <Filter Include="02: Object\Bullet">
       <UniqueIdentifier>{3601eafc-26f5-4883-a5c0-fadb52187d22}</UniqueIdentifier>
     </Filter>
@@ -47,18 +51,14 @@
     <Filter Include="02: Object\Bullet\Ad">
       <UniqueIdentifier>{05c92926-e948-47f0-a9b4-1a5a0dc9b2e8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02: Object\Enemy">
-      <UniqueIdentifier>{518aec0b-be72-4eb5-9975-d3258287a63d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="02: Object\Bullet\MB">
       <UniqueIdentifier>{bec6139f-3abb-41a0-ab6a-04fb2af53baf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02: Object\Enemy">
+      <UniqueIdentifier>{518aec0b-be72-4eb5-9975-d3258287a63d}</UniqueIdentifier>
+    </Filter>
     <Filter Include="02: Object\Player">
       <UniqueIdentifier>{e617ec6b-796a-43ae-8954-cd41cb46394a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Shaders">
-      <UniqueIdentifier>{2c3d4c8c-5d1a-459a-a05a-a4e4b608a44e}</UniqueIdentifier>
-      <Extensions>fx;fxh;hlsl</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -228,6 +228,15 @@
       <Filter>03: Manager</Filter>
     </ClCompile>
     <ClCompile Include="SoundMgr.cpp" />
+    <ClCompile Include="Stage_3_0.cpp">
+      <Filter>01: Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="mob_3.cpp">
+      <Filter>02: Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="boss_3.cpp">
+      <Filter>02: Object\Enemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
@@ -343,6 +352,15 @@
       <Filter>03: Manager</Filter>
     </ClInclude>
     <ClInclude Include="SoundMgr.h" />
+    <ClInclude Include="Stage_3_0.h">
+      <Filter>01: Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="mob_3.h">
+      <Filter>02: Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="boss_3.h">
+      <Filter>02: Object\Enemy</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>

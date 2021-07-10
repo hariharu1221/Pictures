@@ -390,6 +390,7 @@
   <ItemGroup>
     <ClCompile Include="boss_1.cpp" />
     <ClCompile Include="boss_2.cpp" />
+    <ClCompile Include="boss_3.cpp" />
     <ClCompile Include="cBullet.cpp" />
     <ClCompile Include="cBulletAdmin.cpp" />
     <ClCompile Include="cCameraManager.cpp" />
@@ -414,6 +415,7 @@
     <ClCompile Include="line.cpp" />
     <ClCompile Include="mob_1.cpp" />
     <ClCompile Include="mob_2.cpp" />
+    <ClCompile Include="mob_3.cpp" />
     <ClCompile Include="nullScene.cpp" />
     <ClCompile Include="RandomMgr.cpp" />
     <ClCompile Include="SelectScene.cpp" />
@@ -421,10 +423,12 @@
     <ClCompile Include="SoundMgr.cpp" />
     <ClCompile Include="Stage_1_0.cpp" />
     <ClCompile Include="Stage_2_0.cpp" />
+    <ClCompile Include="Stage_3_0.cpp" />
     <ClCompile Include="TileMap.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClInclude Include="boss_1.h" />
     <ClInclude Include="boss_2.h" />
+    <ClInclude Include="boss_3.h" />
     <ClInclude Include="cBullet.h" />
     <ClInclude Include="cBulletAdmin.h" />
     <ClInclude Include="cCameraManager.h" />
@@ -449,6 +453,7 @@
     <ClInclude Include="line.h" />
     <ClInclude Include="mob_1.h" />
     <ClInclude Include="mob_2.h" />
+    <ClInclude Include="mob_3.h" />
     <ClInclude Include="nullScene.h" />
     <ClInclude Include="RandomMgr.h" />
     <ClInclude Include="SelectScene.h" />
@@ -456,6 +461,7 @@
     <ClInclude Include="SoundMgr.h" />
     <ClInclude Include="Stage_1_0.h" />
     <ClInclude Include="Stage_2_0.h" />
+    <ClInclude Include="Stage_3_0.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="TileMap.h" />
     <ClInclude Include="TitleScene.h" />

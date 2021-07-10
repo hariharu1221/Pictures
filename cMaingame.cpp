@@ -21,6 +21,7 @@ void cMaingame::Init()
     SCENE->AddScene("nullScene", new nullScene);
     SCENE->AddScene("Stage_1_0", new Stage_1_0);
     SCENE->AddScene("Stage_2_0", new Stage_2_0);
+    SCENE->AddScene("Stage_3_0", new Stage_3_0);
     SCENE->ChangeScene("TitleScene");
     //CAMERA->Init();
 }
@@ -72,6 +73,8 @@ void cMaingame::AddResource()
     IMAGE->AddImage("start_d", "title/start_d");
     IMAGE->AddImage("2-0stage_f", "2-0stage_f");
     IMAGE->AddImage("2-0stage_c", "2-0stage_c");
+    IMAGE->AddImage("3-0stage_f", "3-0stage_f");
+    IMAGE->AddImage("3-0stage_c", "3-0stage_c");
     IMAGE->AddImage("exit_b", "title/exit_b");
     IMAGE->AddImage("exit_d", "title/exit_d");
     IMAGE->AddImage("credit_b", "title/credit_b");
@@ -80,10 +83,13 @@ void cMaingame::AddResource()
     IMAGE->AddImage("camera", "camera");
     IMAGE->AddImage("boss", "boss");
     IMAGE->AddImage("boss2", "boss2");
+    IMAGE->AddImage("boss3", "boss3");
     IMAGE->AddImage("mob1", "mob1");
     IMAGE->AddImage("mob2", "mob2");
     IMAGE->AddImage("mob3", "mob3");
     IMAGE->AddImage("mob4", "mob4");
+    IMAGE->AddImage("mob5", "mob5");
+    IMAGE->AddImage("mob6", "mob6");
 
     IMAGE->AddImage("start", "start/startgame", 26);
     IMAGE->AddImage("timebar", "timebar/timebar", 6);
@@ -94,6 +100,8 @@ void cMaingame::AddResource()
     IMAGE->AddImage("gc", "gc/gc", 18);
     IMAGE->AddImage("2gve", "gv2/gve/gve", 31);
     IMAGE->AddImage("2gc", "gc2/gc", 23);
+    IMAGE->AddImage("3gve", "gv3/gve/gve", 28);
+    IMAGE->AddImage("3gc", "gc3/gc", 29);
 
     IMAGE->AddImage("PBullet", "PBullet");
     IMAGE->AddImage("AB", "AlphaBlack");

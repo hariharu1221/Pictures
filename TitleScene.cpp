@@ -23,6 +23,7 @@ void TitleScene::Update()
 	{
 		SCENE->ResetScnee("Stage_1_0", new Stage_1_0);
 		SCENE->ResetScnee("Stage_2_0", new Stage_2_0);
+		SCENE->ResetScnee("Stage_3_0", new Stage_3_0);
 	}
 	if (option == false)
 	{
@@ -30,11 +31,8 @@ void TitleScene::Update()
 		if (INPUT->PointUp(VK_LBUTTON, { 790,810,1080,940 }))	SCENE->ChangeScene("Stage_1_0");
 		if (INPUT->PointUp(VK_LBUTTON, { 1200,810,1490,940 }))	exit(0);
 	}
-	else
-	{
-		if (INPUT->KeyDown(VK_DOWN) && optionS < 2) { optionS++; }
-		if (INPUT->KeyDown(VK_UP) && optionS > 1) { optionS--; }
-	}
+	//mciSendString(L"play ./Resource/music/.mp3 repeat", NULL, 0, NULL);
+	//mciSendString(L"stop ./Resource/music/.mp3", NULL, 0, NULL);
 }
 
 void TitleScene::Render()

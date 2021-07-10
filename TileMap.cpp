@@ -34,6 +34,12 @@ void TileMap::Init(int stage)
 		m_gv = IMAGE->MakeVecImg("2gve");
 		m_gc = IMAGE->MakeVecImg("2gc");
 		break;
+	case 3:
+		stage_f = IMAGE->FindImage("3-0stage_f");
+		stage_c = IMAGE->FindImage("3-0stage_c");
+		m_gv = IMAGE->MakeVecImg("3gve");
+		m_gc = IMAGE->MakeVecImg("3gc");
+		break;
 	}
 	SetUp();
 
@@ -473,14 +479,16 @@ void TileMap::SUI()
 
 void TileMap::Text(int alpha, int y)
 {
-	char str[256];
-	if (coloring_per < 10)  sprintf(str, "%.2f%%", (double)coloring_per);
-	else					sprintf(str, "%.1f%%", (double)coloring_per);
-	UI->PrintText(str, Vec2(150, 80 + (y / 1.2)), 50, alpha, 100, 100, 100);
-	sprintf(str, "stage: %d", nowstage + 1);
-	UI->PrintText(str, Vec2(350, 80 + (y / 1.2)), 50, alpha, 100, 100, 100);
-	sprintf(str, "score: %d", int(coloring_per * 100000 * (timer / 3000)));
-	UI->PrintText(str, Vec2(1700, 80) , 100, alpha * (b_gc / m_gc.size() - 1), 50, 50, 50);
+	if (gc == false && gv == false) {
+		char str[256];
+		if (coloring_per < 10)  sprintf(str, "%.2f%%", (double)coloring_per);
+		else					sprintf(str, "%.1f%%", (double)coloring_per);
+		UI->PrintText(str, Vec2(150, 80 + (y / 1.2)), 50, alpha, 100, 100, 100);
+		sprintf(str, "stage: %d", nowstage + 1);
+		UI->PrintText(str, Vec2(350, 80 + (y / 1.2)), 50, alpha, 100, 100, 100);
+		sprintf(str, "score: %d", int(coloring_per * 100000 * (timer / 3000)));
+		UI->PrintText(str, Vec2(1700, 80), 100, alpha * (b_gc / m_gc.size() - 1), 50, 50, 50);
+	}
 }
 
 void TileMap::SetUp()
@@ -549,6 +557,11 @@ void TileMap::ChangeScene()
 			SCENE->ChangeScene("Stage_2_0");
 			break;
 		case 2:
+			IMAGE->ReloadImage("2-0stage_c");
+			IMAGE->ReloadImage("2-0stage_f");
+			SCENE->ChangeScene("Stage_3_0");
+			break;
+		case 3:
 			title = true;
 			break;
 		}
@@ -564,6 +577,8 @@ void TileMap::ChangeScene()
 		IMAGE->ReloadImage("stage_f");
 		IMAGE->ReloadImage("2-0stage_c");
 		IMAGE->ReloadImage("2-0stage_f");
+		IMAGE->ReloadImage("3-0stage_c");
+		IMAGE->ReloadImage("3-0stage_f");
 		stage_f = IMAGE->FindImage("stage_f");
 		stage_c = IMAGE->FindImage("stage_c");
 		SetUp();
@@ -572,21 +587,30 @@ void TileMap::ChangeScene()
 	}
 	if (retry) //스테이지 리로드
 	{
-		IMAGE->ReloadImage("stage_c");
-		IMAGE->ReloadImage("stage_f");
-		IMAGE->ReloadImage("2-0stage_c");
-		IMAGE->ReloadImage("2-0stage_f");
-		stage_f = IMAGE->FindImage("stage_f");
-		stage_c = IMAGE->FindImage("stage_c");
 		SetUp();
 		DrawArea();
 		switch (nowstage)
 		{
 		case 1:
+			IMAGE->ReloadImage("stage_c");
+			IMAGE->ReloadImage("stage_f");
+			stage_f = IMAGE->FindImage("stage_f");
+			stage_c = IMAGE->FindImage("stage_c");
 			SCENE->ReloadScnee("Stage_1_0", new Stage_1_0);
 			break;
 		case 2:
+			IMAGE->ReloadImage("2-0stage_c");
+			IMAGE->ReloadImage("2-0stage_f");
+			stage_f = IMAGE->FindImage("2-0stage_f");
+			stage_c = IMAGE->FindImage("2-0stage_c");
 			SCENE->ReloadScnee("Stage_2_0", new Stage_2_0);
+			break;
+		case 3:
+			IMAGE->ReloadImage("3-0stage_c");
+			IMAGE->ReloadImage("3-0stage_f");
+			stage_f = IMAGE->FindImage("3-0stage_f");
+			stage_c = IMAGE->FindImage("3-0stage_c");
+			SCENE->ReloadScnee("Stage_3_0", new Stage_3_0);
 			break;
 		}
 		retry = false;
