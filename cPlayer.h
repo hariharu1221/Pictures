@@ -11,11 +11,13 @@ public:
 	float m_Hp;
 	float m_MaxHp;
 	int m_Score;
+	float ztimer = 0;
 
 	string ItemName;
 	vector<cTexture*> m_ani = IMAGE->MakeVecImg("player");
 
 	float b_ani = 0;
+	float partcycle = 0;
 
 	cPlayer(vector<cBullet*>& bullet);
 	~cPlayer();
@@ -27,5 +29,6 @@ public:
 	void Move();
 	void FireBullet(Vec2 m_pos);
 	void ItemUpdate();
+	void Skill(Vec2 m_pos);
 };
 

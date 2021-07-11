@@ -29,6 +29,11 @@ void cSceneManager::Render()
 	if (nowScene) nowScene->Render();
 }
 
+void cSceneManager::ObRender()
+{
+	if (nowScene) nowScene->ObRender();
+}
+
 void cSceneManager::UIRender()
 {
 	if (nowScene) nowScene->UIRender();

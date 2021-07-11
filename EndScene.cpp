@@ -21,6 +21,10 @@ void EndScene::Render()
 {
 }
 
+void EndScene::ObRender()
+{
+}
+
 void EndScene::UIRender()
 {
 }

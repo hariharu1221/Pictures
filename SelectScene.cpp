@@ -82,6 +82,10 @@ void SelectScene::Render()
 	if (select == 4) RENDER->CenterRender(IMAGE->FindImage("ping"), Vec2(1473, 318), 0.1);
 }
 
+void SelectScene::ObRender()
+{
+}
+
 void SelectScene::UIRender()
 {
 }

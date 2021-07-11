@@ -19,7 +19,7 @@
 
 #define WI 400
 #define HE 225
-#define coldraw true
+#define coldraw false
 const bool drawbug = false;
 const bool esct = false;
 

@@ -30,5 +30,6 @@ void cMABullet::Update()
 
 void cMABullet::Render()
 {
-	RENDER->CenterRender(m_ani[count], m_pos, 1, m_angle);
+	if (dirtimer >= 0) RENDER->CenterRender(IMAGE->FindImage("bulletwhite"), m_pos, 0.2, m_angle);
+	else RENDER->CenterRender(m_ani[count], m_pos, 1, m_angle);
 }

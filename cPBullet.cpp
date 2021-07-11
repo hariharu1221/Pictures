@@ -1,7 +1,7 @@
 #include "DXUT.h"
 #include "cPBullet.h"
 
-cPBullet::cPBullet(Vec2 pos, Vec2 dir)
+cPBullet::cPBullet(Vec2 pos, Vec2 dir, float damage, float size, float speed)
 	:cBullet(pos, dir, 10)
 {
 	bulletType = "player";

@@ -237,6 +237,9 @@
     <ClCompile Include="boss_3.cpp">
       <Filter>02: Object\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="cParticleLine.cpp">
+      <Filter>03: Manager\Particle</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
@@ -360,6 +363,9 @@
     </ClInclude>
     <ClInclude Include="boss_3.h">
       <Filter>02: Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="cParticleLine.h">
+      <Filter>03: Manager\Particle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

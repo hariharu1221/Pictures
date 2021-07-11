@@ -14,7 +14,7 @@ void TitleScene::Init()
 	SCENE->PlayerInit();
 	set = true;
 	option = false;
-
+	mciSendString(L"play ./Resource/sound/title.mp3 repeat", NULL, 0, NULL);
 }
 
 void TitleScene::Update()
@@ -27,12 +27,14 @@ void TitleScene::Update()
 	}
 	if (option == false)
 	{
-		if (INPUT->PointUp(VK_LBUTTON, { 380,810,670,940 }))	option = true;
-		if (INPUT->PointUp(VK_LBUTTON, { 790,810,1080,940 }))	SCENE->ChangeScene("Stage_1_0");
-		if (INPUT->PointUp(VK_LBUTTON, { 1200,810,1490,940 }))	exit(0);
+		if (INPUT->PointUp(VK_LBUTTON, { 380,810,670,940 })) { option = true; mciSendString(L"play ./Resource/sound/button.mp3", NULL, 0, NULL);
+		}
+		if (INPUT->PointUp(VK_LBUTTON, { 790,810,1080,940 })) {  mciSendString(L"play ./Resource/sound/button.mp3", NULL, 0, NULL); SCENE->ChangeScene("Stage_1_0");
+		}
+		if (INPUT->PointUp(VK_LBUTTON, { 1200,810,1490,940 })) { mciSendString(L"play ./Resource/sound/button.mp3", NULL, 0, NULL) ; exit(0);
+		}
 	}
-	//mciSendString(L"play ./Resource/music/.mp3 repeat", NULL, 0, NULL);
-	//mciSendString(L"stop ./Resource/music/.mp3", NULL, 0, NULL);
+
 }
 
 void TitleScene::Render()
@@ -51,10 +53,15 @@ void TitleScene::Render()
 	}
 }
 
+void TitleScene::ObRender()
+{
+}
+
 void TitleScene::UIRender()
 {
 }
 
 void TitleScene::Release()
 {
+	mciSendString(L"stop ./Resource/sound/title.mp3", NULL, 0, NULL);
 }

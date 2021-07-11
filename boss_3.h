@@ -23,6 +23,8 @@ public:
 	int acttime = 0;
 	int alphaacttime = 0;
 
+	float dash = 0;
+
 	boss_3(vector<cBullet*>& bullet);
 	~boss_3();
 

@@ -54,13 +54,14 @@ void TileMap::Update()
 {
 	ChangeScene();
 	Skill();
-	if(gc == false && gv == false)	Move();
+	if(gc == false && gv == false && damage == false)	Move();
 	cc = { int(pos.x - x_gap), int(pos.y - y_gap) };
 
 	SCENE->per(coloring_per, pos);
 	if (INPUT->KeyUp(VK_F1)) nextstage = true;
 	if (INPUT->KeyUp(VK_F2)) speed = 8;
 	if (INPUT->KeyUp(VK_F3)) hp++;
+	if (INPUT->KeyUp(VK_F4)) hp--;
 	if (INPUT->KeyUp(VK_ESCAPE)) title = true;
 
 	if (camera) {
@@ -103,10 +104,7 @@ void TileMap::Skill()
 		frame = 0;
 
 	if (b_time > 0.15 && damage) { b_count++; b_time = 0; }
-	if (b_count >= ani_bullet.size())	{ b_count = 0; damage = false; }
-
 	if (gc == false) timer -= Delta;
-	if (damage) b_time += Delta * 5;
 }
 
 void TileMap::Move()
@@ -125,9 +123,7 @@ void TileMap::Move()
 				pos.y = T;
 
 			if (Current() == 2)
-			{
 				DrawArea();
-			}
 			else
 				if (!Near(KEY, 3))
 					DrawLine();
@@ -194,30 +190,28 @@ void TileMap::Move()
 					DrawLine();
 		}
 	}
+	if (Current() == 2 || Current() == 3)
+		SCENE->line = true;
+	if (Current() == 1 || Current() == 0)
+		SCENE->line = false;
 }
 
 void TileMap::DrawLine()
 {
 	IsDrawing = true;
-
-	D3DLOCKED_RECT lr;
-	stage_f->ptr->LockRect(0, &lr, 0, D3DLOCK_DISCARD);
-
-	DWORD* pixel = (DWORD*)lr.pBits;
 	POINT c = { pos.x - x_gap,pos.y - y_gap };
 	int index = c.y * CELLSIZEX + c.x;
 	cell[c.x][c.y] = 1;
-	pixel[index] = D3DCOLOR_RGBA(0, 255, 255, 255);
-
-	stage_f->ptr->UnlockRect(0);
 }
 
 void TileMap::DrawArea(int draw_flag)
 {
 	if (!IsDrawing) { first = pos; return; }
+	if (draw_flag == 1) mciSendString(L"stop ./Resource/sound/draw_area.mp3", NULL, 0, NULL);
+	if (draw_flag == 1) mciSendString(L"play ./Resource/sound/draw_area.mp3", NULL, 0, NULL);
+
 	IsDrawing = false;
 
-	DrawArea(1);
 
 	if (draw_flag == 2)
 		if (changecount > cellcount) ccs = true;
@@ -403,10 +397,13 @@ int TileMap::Current()
 
 void TileMap::Render()
 {
+	RENDER->CenterRender(IMAGE->FindImage("back"), CENTER, 1);
 	RENDER->CenterRender(stage_c, CENTER, 1);
 	RENDER->CenterRender(stage_f, CENTER, 1);
 	if (hp <= 0 || timer <= 0) //죽으면
 	{
+		if (b_gv == 0)	mciSendString(L"play ./Resource/sound/end.mp3", NULL, 0, NULL);
+		if (b_gv >= 23 && b_gv <= 26)	mciSendString(L"play ./Resource/sound/paper.mp3", NULL, 0, NULL);
 		b_gv += Delta * 10;
 		gv = true;
 		if (b_gv >= m_gv.size()) b_gv = m_gv.size() - 1;
@@ -418,6 +415,7 @@ void TileMap::Render()
 	}
 	if (coloring_per >= 70)  // 80%채우면5
 	{
+		if(b_gc == 0)	mciSendString(L"play ./Resource/sound/end.mp3", NULL, 0, NULL);
 		b_gc += Delta * 10;
 		gc = true;
 		if (b_gc >= m_gc.size()) b_gc = m_gc.size() - 1;
@@ -426,13 +424,19 @@ void TileMap::Render()
 		b_alpha -= Delta;
 		if (b_alpha <= 0) b_alpha = 0;
 	}
-	if (damage)	RENDER->CenterRender(ani_bullet[int(b_count)], stop_pos);
+	if (b_count >= ani_bullet.size()) { b_count = 0; damage = false; SCENE->damage = false; }
+	if (damage)
+	{
+		SCENE->damage = true;
+		if (b_count == 0) mciSendString(L"stop ./Resource/sound/die.mp3", NULL, 0, NULL);
+		if (b_count == 0) mciSendString(L"play ./Resource/sound/die.mp3", NULL, 0, NULL);
+		RENDER->CenterRender(ani_bullet[int(b_count)], stop_pos, 0.7);
+		b_time += Delta * 5;
+	}
 }
 
-void TileMap::UIRender()
+void TileMap::ObRender()
 {
-	//UI->CenterRender(stage_c, CENTER, 1);
-	//UI->CenterRender(stage_f, CENTER, 1);
 }
 
 void TileMap::SUI()
@@ -453,19 +457,21 @@ void TileMap::SUI()
 
 	if (pos.y <= 180)
 	{
-		UI->CenterRender2(timebar[int((timer * 6 + 50) / 100 - 1)], Vec2(1800, 50), 1, 90 * b_alpha);
+		UI->CenterRender2(timebar[int((timer * 6 + 50) / 200 - 1)], Vec2(1800, 50), 1, 90 * b_alpha);
 		UI->CenterRender2(IMAGE->FindImage("camera"), Vec2(10, 10), 1, 90 * b_alpha);
 		Text(100, 100);
 	}
 	else
 	{
-		UI->CenterRender2(timebar[int((timer * 6 + 50) / 100 - 1)], Vec2(1800, 50), 1, 255 * b_alpha);
+		UI->CenterRender2(timebar[int((timer * 6 + 50) / 200 - 1)], Vec2(1800, 50), 1, 255 * b_alpha);
 		UI->CenterRender2(IMAGE->FindImage("camera"), Vec2(10, 10), 1, 255 * b_alpha);
 		Text(255, 100);
 	}
 
 	if (start)
 	{
+		if (b_start >= 6 && b_start <= 10)	mciSendString(L"play ./Resource/sound/start_ready.mp3", NULL, 0, NULL);
+		if (b_start >= 20 && b_start <= 23)	mciSendString(L"play ./Resource/sound/start.mp3", NULL, 0, NULL);
 		b_start += 0.1;
 		if (b_start >= m_start.size()) { start = false; b_start = 0; }
 		UI->CenterRender(m_start[int(b_start)], CENTER, 1.2);
@@ -484,10 +490,12 @@ void TileMap::Text(int alpha, int y)
 		if (coloring_per < 10)  sprintf(str, "%.2f%%", (double)coloring_per);
 		else					sprintf(str, "%.1f%%", (double)coloring_per);
 		UI->PrintText(str, Vec2(150, 80 + (y / 1.2)), 50, alpha, 100, 100, 100);
-		sprintf(str, "stage: %d", nowstage + 1);
+		sprintf(str, "stage: %d", nowstage);
 		UI->PrintText(str, Vec2(350, 80 + (y / 1.2)), 50, alpha, 100, 100, 100);
 		sprintf(str, "score: %d", int(coloring_per * 100000 * (timer / 3000)));
-		UI->PrintText(str, Vec2(1700, 80), 100, alpha * (b_gc / m_gc.size() - 1), 50, 50, 50);
+		UI->PrintText(str, Vec2(1600, 80), 100, alpha, 50, 50, 50);
+		sprintf(str, "TIME: %d", int(timer));
+		UI->PrintText(str, Vec2(1700, 180), 50, alpha, 50, 50, 50);
 	}
 }
 
@@ -510,7 +518,7 @@ void TileMap::SetUp()
 
 	hp = 5;
 	speed = 4;
-	timer = 100;
+	timer = 200;
 	second = { 0,0 };
 	frame = 0;
 

@@ -21,6 +21,10 @@ void nullScene::Render()
 {
 }
 
+void nullScene::ObRender()
+{
+}
+
 void nullScene::UIRender()
 {
 }

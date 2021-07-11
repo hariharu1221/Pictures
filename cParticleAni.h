@@ -4,7 +4,7 @@ class cParticleAni :
     public cParticle
 {
 public:
-    cParticleAni(Vec2 pos, float size);
+    cParticleAni(Vec2 pos, float size, const string& key);
     virtual ~cParticleAni();
 
     vector<cTexture*> m_images;

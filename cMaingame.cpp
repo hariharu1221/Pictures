@@ -39,6 +39,7 @@ void cMaingame::Render()
 {
     SCENE->Render();
     PART->Render();
+    SCENE->ObRender();
     UI->Begin();
     SCENE->UIRender();
     UI->End();
@@ -90,6 +91,8 @@ void cMaingame::AddResource()
     IMAGE->AddImage("mob4", "mob4");
     IMAGE->AddImage("mob5", "mob5");
     IMAGE->AddImage("mob6", "mob6");
+    IMAGE->AddImage("back", "back");
+    IMAGE->AddImage("z", "z");
 
     IMAGE->AddImage("start", "start/startgame", 26);
     IMAGE->AddImage("timebar", "timebar/timebar", 6);
@@ -102,6 +105,9 @@ void cMaingame::AddResource()
     IMAGE->AddImage("2gc", "gc2/gc", 23);
     IMAGE->AddImage("3gve", "gv3/gve/gve", 28);
     IMAGE->AddImage("3gc", "gc3/gc", 29);
+    IMAGE->AddImage("part", "part/part", 12);
+    IMAGE->AddImage("bdash", "bdash/dash", 9);
+    IMAGE->AddImage("worldpart", "theworld/part", 8);
 
     IMAGE->AddImage("PBullet", "PBullet");
     IMAGE->AddImage("AB", "AlphaBlack");
@@ -109,7 +115,9 @@ void cMaingame::AddResource()
     IMAGE->AddImage("selectS", "selectS");
     IMAGE->AddImage("ping", "ping");
 
+    IMAGE->AddImage("bulletwhite", "bullet/bulletwhite");
     IMAGE->AddImage("bullet", "bullet/bullet", 4);
+    IMAGE->AddImage("bulletworld", "bullet/bulletworld", 2);
     IMAGE->AddImage("bulletblue", "bullet/b_bullet", 8);
     IMAGE->AddImage("damage", "bullet/damage", 28);
 }

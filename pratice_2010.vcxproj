@@ -401,6 +401,7 @@
     <ClCompile Include="cMBullet.cpp" />
     <ClCompile Include="cParticle.cpp" />
     <ClCompile Include="cParticleAni.cpp" />
+    <ClCompile Include="cParticleLine.cpp" />
     <ClCompile Include="cParticleManager.cpp" />
     <ClCompile Include="cPBullet.cpp" />
     <ClCompile Include="cPlayer.cpp" />
@@ -439,6 +440,7 @@
     <ClInclude Include="cMBullet.h" />
     <ClInclude Include="cParticle.h" />
     <ClInclude Include="cParticleAni.h" />
+    <ClInclude Include="cParticleLine.h" />
     <ClInclude Include="cParticleManager.h" />
     <ClInclude Include="cPBullet.h" />
     <ClInclude Include="cPlayer.h" />

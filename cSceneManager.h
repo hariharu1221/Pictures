@@ -21,9 +21,13 @@ public:
 
 	bool clearordie = false;
 	bool tile = false;
+	bool damage = false;
+	bool line = false;
+	bool theworld = false;
 
 	void Update();
 	void Render();
+	void ObRender();
 	void UIRender();
 	void Release();
 

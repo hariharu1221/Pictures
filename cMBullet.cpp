@@ -9,6 +9,8 @@ cMBullet::cMBullet(Vec2 pos, Vec2 dir, float damage, float size, float speed, in
 
 	if (color == 1) { m_ani = IMAGE->MakeVecImg("bulletblue"); isize = 1; }
 	if (color == 2)	{ m_ani = IMAGE->MakeVecImg("bulletblue"); isize = 0.5; }
+	if (color == 3) { m_ani = IMAGE->MakeVecImg("bulletworld"); isize = 0.2; }
+	if (color == 4) { m_ani = IMAGE->MakeVecImg("bulletworld"); isize = 0.3; }
 }
 
 cMBullet::~cMBullet()

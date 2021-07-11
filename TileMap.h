@@ -37,7 +37,7 @@ public:
 	float frame;
 	float bultime = 0;
 	float skilltime = 0;
-	float b_count = 4;
+	float b_count = 0;
 	float b_time = 0;
 	float b_gc = 0;
 	float b_gv = 0;
@@ -92,7 +92,7 @@ public:
 	void Init(int stage);
 	void Update();
 	void Render();
-	void UIRender();
+	void ObRender();
 	void SUI();
 	void Text(int alpha, int y);
 

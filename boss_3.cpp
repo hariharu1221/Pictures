@@ -35,6 +35,8 @@ void boss_3::Move(int cell[][CELLSIZEY])
 			if (cell[int(c.x + x)][int(c.y + y)] == 2)
 				dir = RANDOM->Vecc2(bpos);
 	bpos += dir * 200 * Delta;
+	if (dash >= 4) { PART->AddParticle(bpos, 1, "bdash"); bpos += dir * 400 * Delta;  }
+	if (dash >= 8)  dash = 0;
 }
 
 void boss_3::Skill(Vec2 m_pos)
@@ -86,6 +88,7 @@ void boss_3::Skill(Vec2 m_pos)
 	skilltime += Delta;
 	b_time += Delta;
 	busttime += Delta;
+	dash += Delta;
 }
 
 void boss_3::Render()

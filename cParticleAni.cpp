@@ -1,11 +1,10 @@
 #include "DXUT.h"
 #include "cParticleAni.h"
 
-cParticleAni::cParticleAni(Vec2 pos, float size)
+cParticleAni::cParticleAni(Vec2 pos, float size, const string& key)
 	:cParticle(pos, size)
 {
-	m_images = IMAGE->MakeVecImg("mdie");
-	//SOUND->Play("explosion-2")->SetVolume(-1800);
+	m_images = IMAGE->MakeVecImg(key);
 	isDestroy = false;
 }
 
